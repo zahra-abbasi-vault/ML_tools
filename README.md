@@ -8,10 +8,6 @@ the callbacks I used and coded in the file helped me in my job.
 the callbacks checkpoint, tensorboard, reduce_lr are often used by many people. However, the callback I coded named "SaveBestAccuracyCallback" is not that common and is a good addition to the training process.
 
 
-## infer_one_image.py and infer_images_in_batch.py 
-These are two files that contain the code for the inference of one image and a batch of images respectively.
-
-
 ## augmentations.py
 This file contains some helpful functions to augment images.
 ### original image
