@@ -1,11 +1,10 @@
 import cv2
 import random
 import numpy as np
-import os
 
 #this function changes the brightness of an image
 def change_brightness(img):
-    brightness = random.randint(-25,23)
+    brightness = random.randint(-30,30)
     print("the brightness value is: ", brightness)
     out = cv2.addWeighted( img, 1, img, 0, brightness)
     return out
@@ -30,7 +29,7 @@ def adjust_saturation(img):
 def change_color(image):
     choices = [ 0 , 1 , 2 ]
     random_channel = random.choice(choices)
-    random_values = random.randint(100,114) * 0.01
+    random_values = random.randint(130,134) * 0.01
     added_weight = image[:,:, random_channel]  * random_values
     added_weight[added_weight>255] = 255
     added_weight = np.array(added_weight, dtype='uint8')
@@ -52,12 +51,8 @@ def hisogram_equlization(image):
     
 
 if __name__ == "__main__":
-    for rt , _ , files in os.walk(r"path/to/folder"):
-        for img in files:
-            orginal_img = cv2.imread(os.path.join(rt , img))
-            processed = hisogram_equlization(orginal_img)
+    images_path = r"path/to/image"
+    img = cv2.imread(images_path)
+    hisogram_equlization_applied = hisogram_equlization(img)
+    cv2.imwrite("hisogram_equlization_applied.bmp", hisogram_equlization_applied)
 
-            cv2.imshow("original",orginal_img)
-            cv2.imshow("histogram" , processed)
-            cv2.waitKey(0)
-    
